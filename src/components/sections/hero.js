@@ -50,9 +50,13 @@ const StyledContentWrapper = styled(ContentWrapper)`
       @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
         margin-bottom: 0;
       }
+      span {
+        font-size: 1.5rem;
+      }
     }
     .subtitle {
       margin-top: -0.75rem;
+      font-size: 1.2rem !important;
     }
     .description {
       font-size: 1.125rem;
@@ -124,18 +128,15 @@ const Hero = ({ content }) => {
                 />
               </motion.div>
             </div>
-            {frontmatter.title}
+            <span>{frontmatter.title}</span>
           </h1>
           <h2 className="subtitle">
             {frontmatter.subtitlePrefix}{" "}
             <AnimatedUnderlining animate={uControls} big>
               {frontmatter.subtitle}
             </AnimatedUnderlining>
-            {frontmatter.subtitleDeux}{" "}
+            {frontmatter.subtitleDeux} cécile
           </h2>
-        </motion.div>
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={sControls}>
-          <Social fontSize=".95rem" padding=".3rem 1.25rem" width="auto" />
         </motion.div>
       </StyledContentWrapper>
     </StyledSection>
