@@ -131,10 +131,8 @@ const Hero = ({ content }) => {
             <AnimatedUnderlining animate={uControls} big>
               {frontmatter.subtitle}
             </AnimatedUnderlining>
+            {frontmatter.subtitleDeux}{" "}
           </h2>
-          <div className="description">
-            <MDXRenderer>{body}</MDXRenderer>
-          </div>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 20 }} animate={sControls}>
           <Social fontSize=".95rem" padding=".3rem 1.25rem" width="auto" />
