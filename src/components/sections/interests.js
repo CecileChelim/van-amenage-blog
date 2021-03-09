@@ -13,7 +13,7 @@ const StyledSection = styled.section`
   width: 100%;
   height: auto;
   background: ${({ theme }) => theme.colors.background};
-  margin-top: 6rem;
+  margin-top: -5rem;
 `
 
 const StyledContentWrapper = styled(ContentWrapper)`
@@ -23,6 +23,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding-right: 0;
     padding-left: 0;
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -152,7 +153,7 @@ const Interests = ({ content }) => {
   return (
     <StyledSection id="interests">
       <StyledContentWrapper>
-        <h3 className="section-title">{frontmatter.title}</h3>
+        <h6 className="section-title">{"Thèmes van / fourgon van aménagé"}</h6>
         <StyledInterests itemCount={interests.length} ref={ref}>
           {interests.slice(0, shownInterests).map(({ name, icon }, key) => (
             <motion.div
@@ -165,14 +166,14 @@ const Interests = ({ content }) => {
               <Img className="icon" fixed={icon.childImageSharp.fixed} /> {name}
             </motion.div>
           ))}
-          {shownInterests < interests.length && (
+          {shownInterests < 6 && (
             <motion.div initial={{ opacity: 0, scaleY: 0 }} animate={bControls}>
               <Button
                 onClick={() => showMoreItems()}
                 type="button"
                 textAlign="left"
               >
-                + Load more
+                + Voir plus
               </Button>
             </motion.div>
           )}

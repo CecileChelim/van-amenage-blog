@@ -15,20 +15,21 @@ import { lightTheme, darkTheme } from "../../styles/theme"
 const StyledSection = styled.section`
   width: 100%;
   height: auto;
-  background: ${({ theme }) => theme.colors.background};
+  background: #fff;
 `
 
 const StyledContentWrapper = styled(ContentWrapper)`
   && {
     width: 100%;
     height: 100%;
-    min-height: 60vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 6rem;
+    align-items: center;
+    margin-bottom: 0rem;
     @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-      margin-bottom: 4rem;
+      margin-bottom: 0rem;
     }
     .greetings {
       display: flex;
@@ -51,7 +52,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
         margin-bottom: 0;
       }
       span {
-        font-size: 1.5rem;
+        font-size: 2rem;
       }
     }
     .subtitle {
@@ -135,7 +136,8 @@ const Hero = ({ content }) => {
             <AnimatedUnderlining animate={uControls} big>
               {frontmatter.subtitle}
             </AnimatedUnderlining>
-            {frontmatter.subtitleDeux} cécile
+            {" pour l'aménagement de votre van !"}
+            {frontmatter.subtitleSufix}{" "}
           </h2>
         </motion.div>
       </StyledContentWrapper>

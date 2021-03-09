@@ -37,6 +37,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding-right: 0;
     padding-left: 0;
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {

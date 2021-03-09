@@ -8,20 +8,20 @@ const StyledNav = styled.nav`
   display: none;
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    width: 31.25rem;
+    width: auto;
     background: ${({ theme }) => theme.colors.background};
     a {
       color: ${({ theme }) => theme.colors.primary};
     }
   }
   .nav-link {
-    font-size: 1rem;
+    font-size: .7rem;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     position: relative;
-    margin: 0 0 0 1.25rem;
+    margin: 0 0 0 1rem;
     padding: 0;
     &::before {
       transition: 200ms ease-out;
@@ -47,6 +47,7 @@ const StyledNav = styled.nav`
     font-size: 1rem;
     padding: 0.5rem 1.5rem;
     margin: 0;
+    margin-left:2rem;
     &:hover {
       background: ${({ theme }) => theme.colors.primary};
       color: ${({ theme }) => theme.colors.background};

@@ -7,7 +7,7 @@ import Context from "../../context"
 import ContentWrapper from "../../styles/contentWrapper"
 import Underlining from "../../styles/underlining"
 import { parseDate } from "../../utils"
-import { mediumRssFeed, shownArticles } from "../../../config"
+import { articlesIsolation, shownArticles } from "../../../config"
 // import { rssFeed, shownArticles } from "../../../config"
 import { lightTheme, darkTheme } from "../../styles/theme"
 
@@ -23,6 +23,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
     height: 100%;
     padding-right: 0;
     padding-left: 0;
+    align-items: center;
     @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
       padding-right: 2.5rem;
       padding-left: 2.5rem;
@@ -37,7 +38,8 @@ const StyledContentWrapper = styled(ContentWrapper)`
     }
     .articles {
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
+      flex-direction: column;
       overflow-x: scroll;
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
@@ -74,7 +76,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
       }
     }
     .card {
-      width: 16.25rem;
+      width: 100%;
       height: 12rem;
       display: flex;
       flex-direction: column;
@@ -120,28 +122,7 @@ const Articles = () => {
   const [articles, setArticles] = useState()
   const articlesControls = useAnimation()
 
-  // Load and display articles after the splashScreen sequence is done
-  useEffect(() => {
-    const loadArticles = async () => {
-      if (isIntroDone) {
-        await articlesControls.start({
-          opacity: 1,
-          y: 0,
-          transition: { delay: 1 },
-        })
-        fetch(mediumRssFeed, { headers: { Accept: "application/json" } })
-          // fetch(rssFeed, { headers: { Accept: "application/json" } })
-          .then(res => res.json())
-          // Feed also contains comments, therefore we filter for articles only
-          .then(data => data.items.filter(item => item.categories.length > 0))
-          // .then(data => data.items.filter(item => item.title.length > 0))
-          .then(newArticles => newArticles.slice(0, MAX_ARTICLES))
-          .then(articles => setArticles(articles))
-          .catch(error => console.log(error))
-      }
-    }
-    loadArticles()
-  }, [isIntroDone, articlesControls, MAX_ARTICLES])
+
 
   return (
     <StyledSection
@@ -150,60 +131,76 @@ const Articles = () => {
       animate={articlesControls}
     >
       <StyledContentWrapper>
-        <h3 className="section-title">Latest Articles</h3>
+
         <div className="articles">
-          {articles
-            ? articles.map(item => (
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                  title={item.title}
-                  aria-label={item.link}
-                  key={item.link}
-                >
-                  <div className="card">
+          <a
+            href={"#"}
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            <div className="card">
                     <span className="category">
                       <Underlining color="tertiary" hoverColor="secondary">
-                        {item.categories[2]}
+                        gest
                       </Underlining>
                     </span>
-                    <h4 className="title">{item.title}</h4>
-                    <span className="date">{parseDate(item.pubDate)}</span>
-                  </div>
-                </a>
-              ))
-            : [...Array(MAX_ARTICLES <= 3 ? MAX_ARTICLES : 3)].map((i, key) => (
-                <div className="card" key={key}>
-                  <SkeletonLoader
-                    height="1.5rem"
-                    style={{ marginBottom: ".5rem" }}
-                    background={
-                      darkMode
-                        ? darkTheme.colors.tertiary
-                        : lightTheme.colors.tertiary
-                    }
-                  />
-                  <SkeletonLoader
-                    height="4rem"
-                    background={
-                      darkMode
-                        ? darkTheme.colors.tertiary
-                        : lightTheme.colors.tertiary
-                    }
-                  />
-                  <SkeletonLoader
-                    height=".75rem"
-                    width="50%"
-                    style={{ marginTop: ".5rem" }}
-                    background={
-                      darkMode
-                        ? darkTheme.colors.tertiary
-                        : lightTheme.colors.tertiary
-                    }
-                  />
-                </div>
-              ))}
+              <h4 className="title">Title</h4>
+              <span className="date">date</span>
+            </div>
+          </a>
+
+          {/*{articles*/}
+          {/*  ? articles.map(item => (*/}
+          {/*      <a*/}
+          {/*        href={item.link}*/}
+          {/*        target="_blank"*/}
+          {/*        rel="nofollow noopener noreferrer"*/}
+          {/*        title={item.title}*/}
+          {/*        aria-label={item.link}*/}
+          {/*        key={item.link}*/}
+          {/*      >*/}
+          {/*        <div className="card">*/}
+          {/*          <span className="category">*/}
+          {/*            <Underlining color="tertiary" hoverColor="secondary">*/}
+          {/*              {item.categories[2]}*/}
+          {/*            </Underlining>*/}
+          {/*          </span>*/}
+          {/*          <h4 className="title">{item.title}</h4>*/}
+          {/*          <span className="date">{parseDate(item.pubDate)}</span>*/}
+          {/*        </div>*/}
+          {/*      </a>*/}
+          {/*    ))*/}
+          {/*  : [...Array(MAX_ARTICLES <= 3 ? MAX_ARTICLES : 3)].map((i, key) => (*/}
+          {/*      <div className="card" key={key}>*/}
+          {/*        <SkeletonLoader*/}
+          {/*          height="1.5rem"*/}
+          {/*          style={{ marginBottom: ".5rem" }}*/}
+          {/*          background={*/}
+          {/*            darkMode*/}
+          {/*              ? darkTheme.colors.tertiary*/}
+          {/*              : lightTheme.colors.tertiary*/}
+          {/*          }*/}
+          {/*        />*/}
+          {/*        <SkeletonLoader*/}
+          {/*          height="4rem"*/}
+          {/*          background={*/}
+          {/*            darkMode*/}
+          {/*              ? darkTheme.colors.tertiary*/}
+          {/*              : lightTheme.colors.tertiary*/}
+          {/*          }*/}
+          {/*        />*/}
+          {/*        <SkeletonLoader*/}
+          {/*          height=".75rem"*/}
+          {/*          width="50%"*/}
+          {/*          style={{ marginTop: ".5rem" }}*/}
+          {/*          background={*/}
+          {/*            darkMode*/}
+          {/*              ? darkTheme.colors.tertiary*/}
+          {/*              : lightTheme.colors.tertiary*/}
+          {/*          }*/}
+          {/*        />*/}
+          {/*      </div>*/}
+          {/*    ))}*/}
         </div>
       </StyledContentWrapper>
     </StyledSection>

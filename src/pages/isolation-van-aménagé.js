@@ -4,16 +4,67 @@ import { graphql } from "gatsby"
 
 import GlobalStateProvider from "../context/provider"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Hero from "../components/sections/hero"
-import Articles from "../components/sections/articles"
-import About from "../components/sections/about"
-import Interests from "../components/sections/interests"
-import Projects from "../components/sections/projects"
-import Contact from "../components/sections/contact"
-import { seoTitleSuffix } from "../../config"
+import styled from "styled-components"
+import ContentWrapper from "../styles/contentWrapper"
+import ArticlesIsolation from "../components/sections/articles-isolation"
 
-const IndexPage = ({ data }) => {
+const StyledSection = styled.section`
+  width: 100%;
+  height: auto;
+  background: #fff;
+`
+
+const StyledContentWrapper = styled(ContentWrapper)`
+  && {
+    width: 100%;
+    height: 100%;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0rem;
+    text-align:center;
+    @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+      margin-bottom: 0rem;
+    }
+    .greetings {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .emoji {
+      margin-left: 0.75rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+        margin-left: 1rem;
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+    .title {
+      margin-bottom: 1.5rem;
+      @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+        margin-bottom: 0;
+      }
+      span {
+        font-size: 2rem;
+      }
+    }
+    .subtitle {
+      margin-top: -0.75rem;
+      font-size: 1.2rem !important;
+    }
+    .description {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+    }
+  }
+`
+
+
+const IsolationPage = ({ data }) => {
   const { frontmatter } = data.index.edges[0].node
   const { seoTitle, useSeoTitleSuffix, useSplashScreen } = frontmatter
 
@@ -25,33 +76,46 @@ const IndexPage = ({ data }) => {
     darkMode: false,
   }
 
+
+
+
   return (
+
     <GlobalStateProvider initialState={globalState}>
       <Layout>
-        <SEO
-          title={
-            useSeoTitleSuffix
-              ? `${seoTitle} - ${seoTitleSuffix}`
-              : `${seoTitle}`
-          }
-        />
-        <Hero content={data.hero.edges} />
-        <Interests content={data.interests.edges} />
-        {/* Articles is populated via Medium RSS Feed fetch */}
-        {/*<Articles />*/}
-        {/*<About content={data.about.edges} />*/}
-        <Projects content={data.projects.edges} />
-        <Contact content={data.contact.edges} />
+        <StyledSection id="header">
+          <StyledContentWrapper>
+            <h3 className="section-title">Isolation van / fourgon aménagé</h3>
+            <p>Il n'y a pas 100 millairds de matériaux pour isoler son fourgon. La plupart des aménageurs ont utilisés :
+              <ul>
+                <li>Le bois : panneau de laine de bois, fibre de bois en panneau</li>
+                <li>Laine de mouton : rouleau, rouleau aiguilletée ou en vrac</li>
+                <li>Le liège : en panneau ou projeté </li>
+              </ul>
+              <br/>
+              Le choix d'un de ces matériaux résulte de plusieurs questions comme la facilité de pose, la résistance au feu, la force d'isolation thermique ou phonique du matériau, et évidemment le budget !
+            <br/>
+            </p>
+          </StyledContentWrapper>
+        </StyledSection>
+        <StyledSection id="header">
+          <StyledContentWrapper>
+            <ArticlesIsolation/>
+          </StyledContentWrapper>
+        </StyledSection>
       </Layout>
     </GlobalStateProvider>
+
+
+
   )
 }
 
-IndexPage.propTypes = {
+IsolationPage.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default IndexPage
+export default IsolationPage
 
 export const pageQuery = graphql`
   {

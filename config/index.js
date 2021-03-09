@@ -1,14 +1,15 @@
 module.exports = {
   //-- SITE SETTINGS -----
   author: "@konstantinmuenster",
-  siteTitle: "Gatsby Starter Portfolio Minimal",
-  siteShortTitle: "Gatsby", // Used as logo text in header, footer, and splash screen
+  siteTitle: "Van aménagé - toutes les ressources pour bien aménager son van",
+  siteShortTitle: "Van aménagé", // Used as logo text in header, footer, and splash screen
   siteDescription:
-    "A modern one-page portfolio with a clean yet expressive design.",
+    "an aménagé - toutes les ressources pour bien aménager son van",
   siteUrl: "https://gatsby-starter-portfolio-minimal.netlify.app/",
-  siteLanguage: "en_US",
+  siteLanguage: "fr_FR",
   siteIcon: "content/favicon.png", // Relative to gatsby-config file
-  seoTitleSuffix: "Portfolio Minimal", // SEO title syntax will be e.g. "Imprint - {seoTitleSuffix}"
+  seoTitleSuffix:
+    "Van aménagé - toutes les ressources pour bien aménager son van", // SEO title syntax will be e.g. "Imprint - {seoTitleSuffix}"
 
   // -- THEME SETTINGS -----
   colors: {
@@ -23,6 +24,7 @@ module.exports = {
       scrollBar: "rgba(0, 0, 0, 0.5)",
       boxShadow: "rgba(0, 0, 0, 0.16)",
       boxShadowHover: "rgba(0, 0, 0, 0.32)",
+      background: "#FFFFFF",
     },
     darkTheme: {
       primary: "#FAFAFA",
@@ -49,6 +51,26 @@ module.exports = {
   // rssFeed: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.theguardian.com%2Finternational%2Frss",
 
   shownArticles: 3,
+
+  articlesIsolation: [
+    {
+      name: "test",
+      url: "https://www.linkedin.com/in/konstantin-muenster/",
+    },
+    {
+      name: "Medium",
+      url: "https://konstantinmuenster.medium.com/",
+    },
+    {
+      name: "Github",
+      url:
+        "https://github.com/konstantinmuenster/gatsby-starter-portfolio-minimal",
+    },
+    {
+      name: "Behance",
+      url: "https://www.behance.net/konstanmnster",
+    },
+  ],
 
   //-- SOCIAL MEDIA SETTINGS -----
   // There are icons available for the following platforms:
@@ -77,20 +99,40 @@ module.exports = {
   navLinks: {
     menu: [
       {
-        name: "Articles",
-        url: "/#articles",
+        name: "Isolation",
+        url: "/isolation-van-aménagé",
       },
       {
-        name: "About Me",
+        name: "Cloison & parois",
         url: "/#about",
       },
       {
-        name: "Features",
+        name: "Électricité",
+        url: "/#projects",
+      },
+      {
+        name: "WC / Douche",
+        url: "/#projects",
+      },
+      {
+        name: "Homologation VASP",
+        url: "/#projects",
+      },
+      {
+        name: "Ouvertures & fenêtres",
+        url: "/#projects",
+      },
+      {
+        name: "Meubles & aménagement",
+        url: "/#projects",
+      },
+      {
+        name: "Décoration",
         url: "/#projects",
       },
     ],
     button: {
-      name: "Contact",
+      name: "Ajouter un lien ?",
       url: "/#contact",
     },
   },
