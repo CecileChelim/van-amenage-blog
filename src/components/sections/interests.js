@@ -134,16 +134,14 @@ const Interests = ({ content }) => {
 
   useEffect(() => {
     const sequence = async () => {
-      if (onScreen) {
-        // i receives the value of the custom prop - can be used to stagger
-        // the animation of each "interest" element
-        await iControls.start(i => ({
-          opacity: 1,
-          scaleY: 1,
-          transition: { delay: i * 0.1 },
-        }))
-        await bControls.start({ opacity: 1, scaleY: 1 })
-      }
+      // i receives the value of the custom prop - can be used to stagger
+      // the animation of each "interest" element
+      await iControls.start(i => ({
+        opacity: 1,
+        scaleY: 1,
+        transition: { delay: i * 0.2 },
+      }))
+      await bControls.start({ opacity: 1, scaleY: 1 })
     }
     sequence()
   }, [onScreen, shownInterests, iControls, bControls])

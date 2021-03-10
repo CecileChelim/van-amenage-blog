@@ -104,7 +104,7 @@ module.exports = {
       },
       {
         name: "Cloison & parois",
-        url: "/#about",
+        url: "/paroi-van-aménagé",
       },
       {
         name: "Électricité",

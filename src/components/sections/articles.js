@@ -122,8 +122,6 @@ const Articles = () => {
   const [articles, setArticles] = useState()
   const articlesControls = useAnimation()
 
-
-
   return (
     <StyledSection
       id="articles"
@@ -131,19 +129,14 @@ const Articles = () => {
       animate={articlesControls}
     >
       <StyledContentWrapper>
-
         <div className="articles">
-          <a
-            href={"#"}
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
+          <a href={"#"} target="_blank" rel="nofollow noopener noreferrer">
             <div className="card">
-                    <span className="category">
-                      <Underlining color="tertiary" hoverColor="secondary">
-                        gest
-                      </Underlining>
-                    </span>
+              <span className="category">
+                <Underlining color="tertiary" hoverColor="secondary">
+                  gest
+                </Underlining>
+              </span>
               <h4 className="title">Title</h4>
               <span className="date">date</span>
             </div>

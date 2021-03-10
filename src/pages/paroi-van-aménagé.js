@@ -6,7 +6,7 @@ import GlobalStateProvider from "../context/provider"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import ContentWrapper from "../styles/contentWrapper"
-import ArticlesIsolation from "../components/sections/articles-isolation"
+import ArticlesParois from "../components/sections/articles-parois"
 
 const StyledSection = styled.section`
   width: 100%;
@@ -63,19 +63,8 @@ const StyledContentWrapper = styled(ContentWrapper)`
   }
 `
 
-const ListMateriau = styled.ul`
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  > li {
-    padding: 1rem;
-    border: 2px solid black;
-    border-radius: 0.5rem;
-    margin-right: 1rem;
-  }
-`
 
-const IsolationPage = ({ data }) => {
+const ParoiPage = ({ data }) => {
   const { frontmatter } = data.index.edges[0].node
   const { seoTitle, useSeoTitleSuffix, useSplashScreen } = frontmatter
 
@@ -92,33 +81,26 @@ const IsolationPage = ({ data }) => {
       <Layout>
         <StyledSection id="header">
           <StyledContentWrapper>
-            <h3 className="section-title">Isolation van / fourgon aménagé</h3>
+            <h3 className="section-title">
+              Parois et cloisons van / fourgon aménagé
+            </h3>
             <p>
               {/* eslint-disable-next-line react/no-unescaped-entities */}
-              Il n'y a pas 100 milliards de matériaux pour isoler son fourgon.
-              La plupart des aménageurs ont utilisés :
-              <ListMateriau>
-                <li><b>Le liège</b> : en panneau ou projeté, pour appliquer directement sur la tôle de votre camion. </li>
-                <li>
-                  <b>La laine</b> : de bois, de mouton en rouleau, en rouleau aiguilletée ou en vrac
-                </li>
-                <li>
-                  <b>L'armaflex</b> : l'isolant avec une très grand résistance thermique qui intègre même un pare-vapeur
-                </li>
-
-              </ListMateriau>
+              Vous avez fini votre isolation OUF ! Il faut maintenant cacher
+              tout ça pour que ca soit propre.
               <br />
-              Le choix d'un de ces matériaux résulte de plusieurs questions
-              comme la facilité de pose, la résistance au feu, la force
-              d'isolation thermique ou phonique du matériau, et évidemment le
-              budget !
+              Sur ce sujet la plupart des aménageurs on utilisé du bois souple,
+              souvent du contre plaqué ou MDF peu épais.
               <br />
+              <br />
+              PS : pensez à faire passez vos cables électrique quand même avant
+              de cloisonner !
             </p>
           </StyledContentWrapper>
         </StyledSection>
         <StyledSection id="header">
           <StyledContentWrapper>
-            <ArticlesIsolation />
+            <ArticlesParois />
           </StyledContentWrapper>
         </StyledSection>
       </Layout>
@@ -126,11 +108,11 @@ const IsolationPage = ({ data }) => {
   )
 }
 
-IsolationPage.propTypes = {
+ParoiPage.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default IsolationPage
+export default ParoiPage
 
 export const pageQuery = graphql`
   {
@@ -141,50 +123,6 @@ export const pageQuery = graphql`
             seoTitle
             useSeoTitleSuffix
             useSplashScreen
-          }
-        }
-      }
-    }
-    hero: allMdx(filter: { fileAbsolutePath: { regex: "/index/hero/" } }) {
-      edges {
-        node {
-          body
-          frontmatter {
-            greetings
-            title
-            subtitlePrefix
-            subtitle
-            icon {
-              childImageSharp {
-                fluid(maxWidth: 60, quality: 90) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    interests: allMdx(
-      filter: { fileAbsolutePath: { regex: "/index/interests/" } }
-    ) {
-      edges {
-        node {
-          exports {
-            shownItems
-            interests {
-              name
-              icon {
-                childImageSharp {
-                  fixed(width: 20, height: 20, quality: 90) {
-                    ...GatsbyImageSharpFixed
-                  }
-                }
-              }
-            }
-          }
-          frontmatter {
-            title
           }
         }
       }
